@@ -5,18 +5,18 @@ import { WebsocketService } from './websocket.service';
 
 const STOCK_URL = 'ws://stocks.mnet.website/';
 
-export interface Message {
+export interface Stock {
 	
 }
 
 @Injectable()
 export class StockService {
-	public messages: Subject<Message>;
+	public stockData: Subject<Stock>;
 
 	constructor(wsService: WebsocketService) {
-		this.messages = <Subject<Message>>wsService
+		this.stockData = <Subject<Stock>>wsService
 			.connect(STOCK_URL)
-			.pipe(map((response: MessageEvent): Message => {
+			.pipe(map((response: MessageEvent): Stock => {
 			    let data = JSON.parse(response.data);
 			    return {
 			     data : data

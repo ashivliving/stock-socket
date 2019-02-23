@@ -11,10 +11,9 @@ export class WebsocketService {
 
   private subject: Subject<MessageEvent>;
 
-  public connect(url): Subject<MessageEvent> {
+  public connect(url): Subject<MessageEvent> { //Function to connect to WS
     if (!this.subject) {
       this.subject = this.create(url);
-      console.log("Successfully connected: " + url);
     } 
     return this.subject;
   }
@@ -30,11 +29,7 @@ export class WebsocketService {
 		return ws.close.bind(ws);
 	})
 	let observer = {
-		next: (data: Object) => {
-			if (ws.readyState === WebSocket.OPEN) {
-				ws.send(JSON.stringify(data));
-			}
-		}
+		
 	}
 	return Subject.create(observer, observable);
   }

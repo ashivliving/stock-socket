@@ -10,20 +10,13 @@ import { StockService } from './stock.service';
 })
 export class AppComponent {
   constructor(private stockService: StockService) {
-		stockService.messages.subscribe(msg => {			
-      		console.log("Response from websocket: " + msg);
-      		console.dir(msg);
+		stockService.stockData.subscribe(msg => {
+      		console.log(msg.data);
 		});
 	}
 
   private message = {
 		author: 'tutorialedge',
 		message: 'this is a test message'
-	}
-
-  sendMsg() {
-		console.log('new message from client to websocket: ', this.message);
-		this.stockService.messages.next();
-		this.message.message = '';
 	}
 }
