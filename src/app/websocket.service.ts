@@ -28,9 +28,7 @@ export class WebsocketService {
 		ws.onclose = obs.complete.bind(obs);
 		return ws.close.bind(ws);
 	})
-	let observer = {
-		
-	}
+	let observer = {};
 	return Subject.create(observer, observable);
   }
 

@@ -6,7 +6,7 @@ import { WebsocketService } from './websocket.service';
 const STOCK_URL = 'ws://stocks.mnet.website/';
 
 export interface Stock {
-	
+	data : []
 }
 
 @Injectable()

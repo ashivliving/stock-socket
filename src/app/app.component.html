@@ -1,9 +1,30 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+<div class="col-xs-12">
+  <div class="text-center"><h1>Stock Market</h1></div>
 </div>
-  
+<div class="clearfix"></div>
+<div class="col-xs-12">
+  <div class="well">
+      <table class="table text-center">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Ticker</th>
+            <th>Price</th>
+            <th>Last Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of stockData; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{stock.stockname | uppercase}}</td>
+            <td [ngStyle]= "{'background-color' : getBackground(stock.currentprice,stock.oldprice)}">{{stock.currentprice | number : '.3'}}
+            </td>
+            <td>{{getUpdatedTime(stock.updated_at)}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
